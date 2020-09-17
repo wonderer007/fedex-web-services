@@ -80,6 +80,9 @@ module FedexWebServices
 
             rs.shipper   = from
             rs.recipient = to
+            special_service = mod::ShipmentSpecialServicesRequested.new
+            special_service.specialServiceTypes = [mod::ShipmentSpecialServiceType::ELECTRONIC_TRADE_DOCUMENTS]
+            rs.specialServicesRequested = special_service
 
             rs.labelSpecification = label_specification
 
