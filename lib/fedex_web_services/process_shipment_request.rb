@@ -82,7 +82,7 @@ module FedexWebServices
             rs.recipient = to
 
             etd_detail = mod::EtdDetail.new
-            etd_detail.requestedDocumentCopies = mod::RequestedShippingDocumentType::COMMERCIAL_INVOICE
+            etd_detail.requestedDocumentCopies = [mod::RequestedShippingDocumentType::COMMERCIAL_INVOICE]
 
 
             special_service = mod::ShipmentSpecialServicesRequested.new
