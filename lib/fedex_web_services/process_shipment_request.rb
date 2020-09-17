@@ -80,14 +80,17 @@ module FedexWebServices
 
             rs.shipper   = from
             rs.recipient = to
-            special_service = mod::ShipmentSpecialServicesRequested.new
-            special_service.specialServiceTypes = [mod::ShipmentSpecialServiceType::ELECTRONIC_TRADE_DOCUMENTS]
-            rs.specialServicesRequested = special_service
 
             etd_detail = mod::EtdDetail.new
-            etd_detail.requestedDocumentCopies = mode::RequestedShippingDocumentType::COMMERCIAL_INVOICE
+            etd_detail.requestedDocumentCopies = mod::RequestedShippingDocumentType::COMMERCIAL_INVOICE
 
-            rs.etdDetail = etd_detail
+
+            special_service = mod::ShipmentSpecialServicesRequested.new
+            special_service.specialServiceTypes = [mod::ShipmentSpecialServiceType::ELECTRONIC_TRADE_DOCUMENTS]
+            special_service.etdDetail = etd_detail
+            rs.specialServicesRequested = special_service
+
+
             rs.labelSpecification = label_specification
 
             rs.packageCount = package_weights.size
